@@ -1,0 +1,330 @@
+{% extends 'stepmind/base.html' %}
+
+{% block title %}Descargar StepMind - Obtén la App{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-4">Descargar StepMind</h1>
+                <p class="lead mb-5">
+                    Obtén la aplicación revolucionaria que transformará tu forma de organizarte. Compatible con dispositivos Android.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Download Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="text-center mb-4 mb-lg-0">
+                    <div class="phone-mockup bg-dark rounded-3 p-4 d-inline-block">
+                        <div class="bg-white rounded-2 p-3">
+                            <div class="gradient-bg rounded-1 p-2 text-center mb-2">
+                                <i class="fas fa-brain fa-2x text-white"></i>
+                            </div>
+                            <div class="text-center">
+                                <small class="text-muted">StepMind</small>
+                                <div class="progress" style="height: 4px;">
+                                    <div class="progress-bar gradient-bg" style="width: 75%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h2 class="display-5 gradient-text fw-bold mb-4">¿Listo para Empezar?</h2>
+                <p class="lead mb-4">
+                    Descarga StepMind ahora y se parte de los primeros integrantes de la futura comunidad de personas que logran todos sus objetivos a través de la disciplina y responsabilidad.
+                </p>
+                
+                <div class="download-info bg-light rounded-3 p-4 mb-4">
+                    <h5 class="mb-3"><i class="fas fa-info-circle me-2"></i>Información de Descarga</h5>
+                    {% if app_download %}
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Versión:</strong> {{ app_download.version }}
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Compatible:</strong> Android 8.0+
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                <strong>Idioma:</strong> Español
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-download text-success me-2"></i>
+                                <strong>Descargas:</strong> {{ app_download.descargas }}
+                            </li>
+                            {% if app_download.descripcion %}
+                            <li class="mb-2">
+                                <i class="fas fa-file-alt text-success me-2"></i>
+                                <strong>Notas:</strong> {{ app_download.descripcion }}
+                            </li>
+                            {% endif %}
+                        </ul>
+                    {% else %}
+                        <p class="text-muted mb-0">No hay versión disponible para descargar en este momento.</p>
+                    {% endif %}
+                </div>
+                
+                <!-- Download Button -->
+                <div class="text-center">
+                    {% if app_download %}
+                        <a href="{% url 'download_apk' app_download.id %}" class="btn btn-gradient btn-lg px-5">
+                            <i class="fas fa-download me-2"></i>Descargar StepMind v{{ app_download.version }}
+                        </a>
+                    {% else %}
+                        <button class="btn btn-secondary btn-lg px-5" disabled>
+                            <i class="fas fa-download me-2"></i>No Disponible
+                        </button>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Instructions Section (Hidden by default) -->
+<section id="instructions" class="py-5 bg-light" style="display: none;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="text-center mb-4">
+                    <h3 class="gradient-text fw-bold">Instrucciones de Instalación</h3>
+                    <p class="text-muted">Sigue estos pasos para instalar StepMind en tu dispositivo Android</p>
+                </div>
+                
+                <div class="steps-timeline">
+                    <div class="step-item mb-4">
+                        <div class="d-flex">
+                            <div class="step-number me-3">
+                                <div class="rounded-circle gradient-bg text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <span class="fw-bold">1</span>
+                                </div>
+                            </div>
+                            <div class="step-content">
+                                <h5>Descarga el APK</h5>
+                                <p class="text-muted">Haz clic en el botón de descarga para obtener el archivo APK de StepMind.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item mb-4">
+                        <div class="d-flex">
+                            <div class="step-number me-3">
+                                <div class="rounded-circle gradient-bg text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <span class="fw-bold">2</span>
+                                </div>
+                            </div>
+                            <div class="step-content">
+                                <h5>Permite Instalaciones Desconocidas</h5>
+                                <p class="text-muted">Ve a Configuración > Seguridad > y activa "Instalar aplicaciones de fuentes desconocidas".</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item mb-4">
+                        <div class="d-flex">
+                            <div class="step-number me-3">
+                                <div class="rounded-circle gradient-bg text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <span class="fw-bold">3</span>
+                                </div>
+                            </div>
+                            <div class="step-content">
+                                <h5>Instala la Aplicación</h5>
+                                <p class="text-muted">Abre el archivo APK descargado y sigue las instrucciones de instalación.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-item mb-4">
+                        <div class="d-flex">
+                            <div class="step-number me-3">
+                                <div class="rounded-circle gradient-bg text-white d-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">
+                                    <span class="fw-bold">4</span>
+                                </div>
+                            </div>
+                            <div class="step-content">
+                                <h5>Disfruta StepMind</h5>
+                                <p class="text-muted">Abre la aplicación y comienza tu viaje hacia una organización más eficaz.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert alert-info mt-4">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>Nota:</strong> StepMind actualmente está disponible solo para Android. Pronto llegará la versión para iOS y Windows.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Requirements Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 gradient-text fw-bold">Requisitos del Sistema</h2>
+            <p class="lead text-muted">Asegúrate de que tu dispositivo cumpla con estos requisitos</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title gradient-text">
+                            <i class="fas fa-mobile-alt me-2"></i>Requisitos Mínimos
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Android 8.0 (Oreo) o superior
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                1 GB de RAM o más
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                200 MB de espacio libre
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Conexión a internet para iniciar sesión
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title gradient-text">
+                            <i class="fas fa-star me-2"></i>Requisitos Recomendados
+                        </h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Android 10.0 o superior
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                2 GB de RAM o más
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                300 MB de espacio libre
+                            </li>
+                            <li class="mb-2">
+                                <i class="fas fa-check text-success me-2"></i>
+                                Conexión estable a internet para iniciar sesión
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 gradient-text fw-bold">Preguntas Frecuentes</h2>
+            <p class="lead text-muted">Resolvemos tus dudas sobre StepMind</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                <i class="fas fa-question-circle me-2"></i>
+                                ¿StepMind será gratis?
+                            </button>
+                        </h2>
+                        <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Sí, StepMind es completamente gratuito. No hay costos ocultos ni compras dentro de la aplicación.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                <i class="fas fa-question-circle me-2"></i>
+                                ¿Mis datos están seguros?
+                            </button>
+                        </h2>
+                        <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Absolutamente. Utilizamos encriptación de última generación y nunca compartimos tus datos con terceros.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mb-3">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                <i class="fas fa-question-circle me-2"></i>
+                                ¿Necesito conexión a internet?
+                            </button>
+                        </h2>
+                        <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                Necesitas conexión para registrarte e iniciar sesión, pero muchas características funcionan offline.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                <i class="fas fa-question-circle me-2"></i>
+                                ¿Habrá versión para iOS y Windows?
+                            </button>
+                        </h2>
+                        <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body">
+                                ¡Sí! Estamos trabajando en la versión para iOS y Windows .Debería estar disponible en los próximos meses.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 gradient-bg">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-4">¿Listo para Transformar tu organización?</h2>
+        <p class="lead mb-4">Únete a la comunidad hoy mismo</p>
+        <button class="btn btn-light btn-lg px-5" onclick="showDownloadInstructions()">
+            <i class="fas fa-download me-2"></i>Descargar StepMind Ahora
+        </button>
+    </div>
+</section>
+
+<script>
+function showDownloadInstructions() {
+    document.getElementById('instructions').style.display = 'block';
+    document.getElementById('instructions').scrollIntoView({ behavior: 'smooth' });
+}
+</script>
+{% endblock %}

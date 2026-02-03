@@ -1,0 +1,231 @@
+{% extends 'stepmind/base.html' %}
+
+{% block title %}Equipo StepMind - Los Creadores{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-4">Nuestro Equipo</h1>
+                <p class="lead mb-5">
+                    Los apasionados desarrolladores detrás de StepMind, comprometidos con transformar la disciplina a través de la tecnología.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 gradient-text fw-bold">Los Protagonistas</h2>
+            <p class="lead text-muted">Conoce a las mentes creativas que hicieron posible StepMind</p>
+        </div>
+        
+        {% if team_members %}
+            <div class="row g-4">
+                {% for member in team_members %}
+                <div class="col-md-4">
+                    <div class="card team-card h-100">
+                        <div class="text-center">
+                            {% if member.foto %}
+                                <img src="{{ member.foto.url }}" class="img-fluid rounded-top" style="width: 100%; height: 300px; object-fit: cover;" alt="{{ member.nombre }}">
+                            {% else %}
+                                <div class="gradient-bg d-inline-flex align-items-center justify-content-center rounded-top" style="width: 100%; height: 300px;">
+                                    <i class="fas fa-user fa-4x text-white"></i>
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title text-center">{{ member.nombre }}</h4>
+                            <p class="text-center gradient-text fw-bold">{{ member.rol }}</p>
+                            <p class="card-text">{{ member.descripcion }}</p>
+                            {% if member.linkedin %}
+                                <div class="text-center">
+                                    <a href="{{ member.linkedin }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                                        <i class="fab fa-linkedin me-2"></i>LinkedIn
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <!-- Default team content when no data in database -->
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card team-card h-100">
+                        <div class="card-img-top gradient-bg d-flex align-items-center justify-content-center" style="height: 250px;">
+                            <i class="fas fa-user fa-4x text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title text-center">Tu Nombre</h4>
+                            <p class="text-center gradient-text fw-bold">Lead Developer</p>
+                            <p class="card-text">Especialista en desarrollo móvil y aprendizaje automático. Apasionado por crear soluciones educativas innovadoras.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card team-card h-100">
+                        <div class="card-img-top gradient-bg d-flex align-items-center justify-content-center" style="height: 250px;">
+                            <i class="fas fa-user fa-4x text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title text-center">Colaborador 1</h4>
+                            <p class="text-center gradient-text fw-bold">UI/UX Designer</p>
+                            <p class="card-text">Experto en diseño de interfaces amigables y experiencia de usuario enfocada en el aprendizaje.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card team-card h-100">
+                        <div class="card-img-top gradient-bg d-flex align-items-center justify-content-center" style="height: 250px;">
+                            <i class="fas fa-user fa-4x text-white"></i>
+                        </div>
+                        <div class="card-body">
+                            <h4 class="card-title text-center">Colaborador 2</h4>
+                            <p class="text-center gradient-text fw-bold">Data Scientist</p>
+                            <p class="card-text">Especialista en algoritmos de IA y análisis de datos para personalizar el aprendizaje.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Development Process -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 gradient-text fw-bold">Nuestro Proceso de Desarrollo</h2>
+            <p class="lead text-muted">Cómo construimos StepMind desde la idea hasta la realidad</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="d-flex">
+                    <div class="me-3">
+                        <div class="rounded-circle gradient-bg text-white d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Ideación</h5>
+                        <p class="text-muted">Identificamos los problemas reales de las personas y conceptualizamos soluciones innovadoras.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="d-flex">
+                    <div class="me-3">
+                        <div class="rounded-circle gradient-bg text-white d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Diseño</h5>
+                        <p class="text-muted">Creamos prototipos y wireframes enfocados en la experiencia del usuario.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="d-flex">
+                    <div class="me-3">
+                        <div class="rounded-circle gradient-bg text-white d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Desarrollo</h5>
+                        <p class="text-muted">Implementamos la aplicación con tecnologías modernas y mejores prácticas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="d-flex">
+                    <div class="me-3">
+                        <div class="rounded-circle gradient-bg text-white d-flex align-items-center justify-content-center" style="width: 50px; height: 50px;">
+                            <i class="fas fa-flask"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Pruebas</h5>
+                        <p class="text-muted">Realizamos pruebas exhaustivas con usuarios para validar la efectividad.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Values Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 gradient-text fw-bold">Nuestros Valores</h2>
+            <p class="lead text-muted">Los principios que guían nuestro trabajo</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-3 text-center">
+                <div class="mb-3">
+                    <i class="fas fa-heart fa-3x gradient-text"></i>
+                </div>
+                <h5>Pasión</h5>
+                <p class="text-muted">Amamos lo que hacemos y nos apasiona poder ayudar a las personas a alcanzar su maximo potencial a través de la disciplina.</p>
+            </div>
+            
+            <div class="col-md-3 text-center">
+                <div class="mb-3">
+                    <i class="fas fa-rocket fa-3x gradient-text"></i>
+                </div>
+                <h5>Innovación</h5>
+                <p class="text-muted">Buscamos constantemente nuevas formas de mejorar la organización y gestión del tiempo y cumplimiento de las tareas.</p>
+            </div>
+            
+            <div class="col-md-3 text-center">
+                <div class="mb-3">
+                    <i class="fas fa-users fa-3x gradient-text"></i>
+                </div>
+                <h5>Colaboración</h5>
+                <p class="text-muted">Trabajamos en equipo para crear las mejores soluciones.</p>
+            </div>
+            
+            <div class="col-md-3 text-center">
+                <div class="mb-3">
+                    <i class="fas fa-star fa-3x gradient-text"></i>
+                </div>
+                <h5>Excelencia</h5>
+                <p class="text-muted">Nos comprometemos con la calidad en cada detalle.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 gradient-bg">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-4">¿Quieres ser parte del equipo?</h2>
+        <p class="lead mb-4">Estamos siempre buscando talentos apasionados por el desarrollo personal</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{% url 'download' %}" class="btn btn-light btn-lg px-4">
+                <i class="fas fa-download me-2"></i>Prueba la App
+            </a>
+            <a href="mailto:silvaisaac148@gmail.com" class="btn btn-outline-light btn-lg px-4">
+                <i class="fas fa-envelope me-2"></i>Contáctanos
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

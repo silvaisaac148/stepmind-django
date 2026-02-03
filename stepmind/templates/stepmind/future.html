@@ -1,0 +1,364 @@
+{% extends 'stepmind/base.html' %}
+
+{% block title %}Futuro de StepMind - Próximas Mejoras{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center">
+                <h1 class="display-4 fw-bold mb-4">El Futuro de StepMind</h1>
+                <p class="lead mb-5">
+                    Descubre las emocionantes mejoras y características que estamos desarrollando para hacer tu experiencia aún mejor.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Vision Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h2 class="display-5 gradient-text fw-bold mb-4">Nuestra Visión a Futuro</h2>
+                <p class="lead mb-4">
+                    Imaginamos un mundo donde cada persona tenga acceso a herramientas personalizadas que lo ayuden a alcanzar su maximo potencial.
+                </p>
+                <p class="mb-4">
+                    StepMind no es solo una aplicación, es el comienzo de un movimiento de desarrollo personal. Estamos comprometidos con evolucionar constantemente, incorporando las últimas tecnologías para el desarrollo personal y las necesidades reales de los usuarios.
+                </p>
+                <div class="vision-points">
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                        <div>
+                            <strong>Accesibilidad Universal:</strong> Llevaremos StepMind a más plataformas y dispositivos.
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                        <div>
+                            <strong>IA integrada:</strong> IA integrada de manera que te ayude a encontrar las mejores maneras para organizar tus tareas y eliminar tus adicciones.
+                        </div>
+                    </div>
+                    <div class="d-flex mb-3">
+                        <i class="fas fa-check-circle text-success me-3 mt-1"></i>
+                        <div>
+                            <strong>Comunidad Global:</strong> Conectaras con usuarios de todo el mundo con tus mismas luchas y metas.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="text-center">
+                    <i class="fas fa-rocket display-1 text-muted opacity-50"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Updates Timeline -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 gradient-text fw-bold">Próximas Actualizaciones</h2>
+            <p class="lead text-muted">Conoce las nuevas funciones que llegarán pronto</p>
+        </div>
+        
+        {% if updates %}
+            <div class="timeline">
+                {% for update in updates %}
+                <div class="timeline-item mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <div class="version-badge gradient-bg text-white rounded-pill px-4 py-2 d-inline-block mb-3">
+                                    <strong>v{{ update.version }}</strong>
+                                </div>
+                                <p class="text-muted">
+                                    <i class="fas fa-calendar me-2"></i>
+                                    {{ update.fecha_estimada|date:"F Y" }}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <h4 class="card-title">{{ update.titulo }}</h4>
+                                    <p class="card-text">{{ update.descripcion }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <!-- Default updates when no data in database -->
+            <div class="timeline">
+                <div class="timeline-item mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <div class="version-badge gradient-bg text-white rounded-pill px-4 py-2 d-inline-block mb-3">
+                                    <strong>v1.1</strong>
+                                </div>
+                                <p class="text-muted">
+                                    <i class="fas fa-calendar me-2"></i>
+                                    Abril 2026
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Modo Colaborativo</h4>
+                                    <p class="card-text">Estudia con amigos, comparte notas y resuelvan problemas juntos en tiempo real.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <div class="version-badge gradient-bg text-white rounded-pill px-4 py-2 d-inline-block mb-3">
+                                    <strong>v1.2</strong>
+                                </div>
+                                <p class="text-muted">
+                                    <i class="fas fa-calendar me-2"></i>
+                                    Julio 2026
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Integración con Calendarios</h4>
+                                    <p class="card-text">Sincroniza tus cronogramas de actividades con Google Calendar y otras aplicaciones.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <div class="version-badge gradient-bg text-white rounded-pill px-4 py-2 d-inline-block mb-3">
+                                    <strong>v1.3</strong>
+                                </div>
+                                <p class="text-muted">
+                                    <i class="fas fa-calendar me-2"></i>
+                                    Octubre 2026
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Análisis Avanzado de Progreso</h4>
+                                    <p class="card-text">Reportes detallados con insights personalizados y recomendaciones de mejora.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item mb-4">
+                    <div class="row align-items-center">
+                        <div class="col-md-4">
+                            <div class="text-center">
+                                <div class="version-badge gradient-bg text-white rounded-pill px-4 py-2 d-inline-block mb-3">
+                                    <strong>v2.0</strong>
+                                </div>
+                                <p class="text-muted">
+                                    <i class="fas fa-calendar me-2"></i>
+                                    Mayo 2026
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card feature-card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Versión Web y iOS</h4>
+                                    <p class="card-text">Accede a StepMind desde cualquier dispositivo con nuestra versión web, versión de escritorio y la app para iPhone/iPad.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<!-- Features in Development -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 gradient-text fw-bold">Características en Desarrollo</h2>
+            <p class="lead text-muted">Un adelanto de lo que estamos construyendo</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-brain fa-3x gradient-text"></i>
+                        </div>
+                        <h4 class="card-title">Tutor IA 24/7</h4>
+                        <p class="card-text">Asistente virtual que responde tus dudas de estudio en cualquier momento del día.</p>
+                        <span class="badge bg-warning text-dark">a futuro</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-gamepad fa-3x gradient-text"></i>
+                        </div>
+                        <h4 class="card-title">Modo Gamificación</h4>
+                        <p class="card-text">Desafíos, logros y recompensas que hacen el estudio más divertido y motivador.</p>
+                        <span class="badge bg-info">En Desarrollo</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card feature-card h-100">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-chart-network fa-3x gradient-text"></i>
+                        </div>
+                        <h4 class="card-title">Comunidad virtual de apoyo</h4>
+                        <p class="card-text">Conecta con usuarios similares, forma grupos de apoyo y comparte recursos.</p>
+                        <span class="badge bg-secondary">Planeado</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Expectations Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 gradient-text fw-bold">Lo Que Esperamos Lograr</h2>
+            <p class="lead text-muted">Nuestros objetivos a largo plazo</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="d-flex">
+                    <div class="me-3">
+                        <div class="rounded-circle gradient-bg text-white d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Mejorar el desarrollo personal de cada usuario</h5>
+                        <p class="text-muted">Ayudar a millones de personas en todo el mundo a cumplir sus metas a través de la construcción de habitos.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="d-flex">
+                    <div class="me-3">
+                        <div class="rounded-circle gradient-bg text-white d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Impacto Global</h5>
+                        <p class="text-muted">Llegar a personas de todo el mundo, sin importar su ubicación, idioma o recursos.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="d-flex">
+                    <div class="me-3">
+                        <div class="rounded-circle gradient-bg text-white d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Innovación Digital</h5>
+                        <p class="text-muted">Ser líderes en la transformación digital de los sistemas de desarrollo personal.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="d-flex">
+                    <div class="me-3">
+                        <div class="rounded-circle gradient-bg text-white d-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h5>Amor por la disciplina</h5>
+                        <p class="text-muted">Inspirar una pasión duradera por la discplina de cada usuario y que a través de esta pueda alcanzar todas sus metas en todos los aspectos de la vida.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Community Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h2 class="display-5 gradient-text fw-bold">Sé Parte del Futuro</h2>
+            <p class="lead text-muted">Tu feedback ayuda a moldear el futuro de StepMind</p>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card feature-card">
+                    <div class="card-body text-center p-5">
+                        <i class="fas fa-comments fa-4x gradient-text mb-4"></i>
+                        <h4 class="mb-3">¿Qué características te gustaría ver?</h4>
+                        <p class="text-muted mb-4">
+                            Estamos siempre escuchando a nuestra comunidad. Tus ideas e sugerencias son valiosas para nosotros.
+                        </p>
+                        <div class="d-flex justify-content-center gap-3">
+                            <a href="mailto:silvaisaac148@gmail.com?subject=Sugerencia para StepMind" class="btn btn-gradient px-4">
+                                <i class="fas fa-envelope me-2"></i>Enviar Sugerencia
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5 gradient-bg">
+    <div class="container text-center">
+        <h2 class="display-5 fw-bold mb-4">El Futuro de la disciplina Está Aquí</h2>
+        <p class="lead mb-4">No te quedes atrás, sé parte de la transformación de vidas a través de la disciplina</p>
+        <div class="d-flex justify-content-center gap-3">
+            <a href="{% url 'download' %}" class="btn btn-light btn-lg px-4">
+                <i class="fas fa-download me-2"></i>Descargar Ahora
+            </a>
+            <a href="{% url 'team' %}" class="btn btn-outline-light btn-lg px-4">
+                <i class="fas fa-users me-2"></i>Conoce al Equipo
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,42 @@
+=# Entorno virtual
+venv/
+env/
+.venv/
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Base de datos SQLite
+*.sqlite3
+db.sqlite3
+
+# Configuración sensible
+.env
+.env.local
+.env.production
+
+# Archivos de Django
+staticfiles/
+media/
+*.log
+
+# IDE y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos comprimidos
+*.zip
+*.tar.gz
+*.rar
