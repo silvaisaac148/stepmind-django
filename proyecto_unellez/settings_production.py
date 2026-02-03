@@ -17,7 +17,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-change-this-in-produc
 DEBUG = False
 
 # Render.com specific hosts
-ALLOWED_HOSTS = ['stepmind-web.onrender.com', 'www.stepmind-web.onrender.com', 'localhost']
+ALLOWED_HOSTS = ['stepmind-django.onrender.com', 'www.stepmind-django.onrender.com', 'localhost']
 
 # Application definition
 INSTALLED_APPS = [
